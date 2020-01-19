@@ -26,7 +26,14 @@ public class MainActivity extends AppCompatActivity {
                 PendingIntent pi = PendingIntent.getActivity(getBaseContext(),12345,i,PendingIntent.FLAG_ONE_SHOT);
 
                 AlarmManager alarmManager =(AlarmManager)getSystemService(ALARM_SERVICE);
-                alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()+60000,pi);
+                alarmManager.set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime()+60000,pi);
+
+                //repeating task in a certain time interval :
+
+                alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME,
+                        SystemClock.elapsedRealtime()+60000,
+                        60000,
+                        pi);
 
             }
         });
