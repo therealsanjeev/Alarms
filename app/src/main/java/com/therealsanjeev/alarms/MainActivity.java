@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,15 +27,16 @@ public class MainActivity extends AppCompatActivity {
                 PendingIntent pi = PendingIntent.getActivity(getBaseContext(),12345,i,PendingIntent.FLAG_ONE_SHOT);
 
                 AlarmManager alarmManager =(AlarmManager)getSystemService(ALARM_SERVICE);
-                alarmManager.set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime()+60000,pi);
+                //alarmManager.set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime()+60000,pi);
 
                 //repeating task in a certain time interval :
 
                 alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME,
-                        SystemClock.elapsedRealtime()+60000,
-                        60000,
+                        SystemClock.elapsedRealtime()+15000,
+                        15000,
                         pi);
 
+                Toast.makeText(MainActivity.this,"clicked",Toast.LENGTH_SHORT).show();
             }
         });
     }
